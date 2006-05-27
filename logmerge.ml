@@ -83,16 +83,32 @@ let savenewoffsets offsetsfile sources =
   in List.iter writeoffset sources
 ;;
 
+let offsetsfn = ref "offsets";;
+let update = ref true;;
+
 let main () =
-  let offsetsfd = Unix.openfile "offsets" [Unix.O_RDWR] 0x600 in
+  Arg.parse [
+      ("--no-update", Arg.Clear update, "Don't update offsets file");
+      ("--offsets", Arg.Set_string offsetsfn, "File containing logfile offsets")
+    ] (fun _ -> raise (Arg.Bad "Too many arguments"))
+    "logmerge [--offsets <file>]";
+  let offsetsfd = Unix.openfile !offsetsfn [Unix.O_RDWR] 0x600 in
   let offsetsfile = Unix.in_channel_of_descr offsetsfd in
   Unix.lockf offsetsfd Unix.F_TLOCK 0;
-  let newoffsetsfile = open_out "offsets.new" in
+  let newoffsetsfn   = (!offsetsfn) ^ ".new" in
+  let newoffsetsfile =
+    if (!update) then Some (open_out newoffsetsfn) else None
+  in
   let files = openfiles offsetsfile in
   merge files;
-  savenewoffsets newoffsetsfile files;
-  close_out newoffsetsfile;
-  Unix.rename "offsets.new" "offsets";
+  match newoffsetsfile with
+    None -> ()
+  | Some newfile ->
+    begin
+      savenewoffsets newfile files;
+      close_out newfile;
+      Unix.rename newoffsetsfn (!offsetsfn);
+    end;
   Unix.lockf offsetsfd Unix.F_ULOCK 0;
   close_in offsetsfile
 in Unix.handle_unix_error main ();;
