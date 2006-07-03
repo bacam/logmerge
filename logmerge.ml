@@ -91,7 +91,7 @@ let main () =
       ("--no-update", Arg.Clear update, "Don't update offsets file");
       ("--offsets", Arg.Set_string offsetsfn, "File containing logfile offsets")
     ] (fun _ -> raise (Arg.Bad "Too many arguments"))
-    "logmerge [--offsets <file>]";
+    "Usage: logmerge [--no-update] [--offsets <file>]";
   let offsetsfd = Unix.openfile !offsetsfn [Unix.O_RDWR] 0x600 in
   let offsetsfile = Unix.in_channel_of_descr offsetsfd in
   Unix.lockf offsetsfd Unix.F_TLOCK 0;
