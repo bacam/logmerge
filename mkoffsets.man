@@ -1,0 +1,16 @@
+.TH MKOFFSETS 1 "4 July 2006" Tardis "Logmerge manual"
+.SH NAME
+mkoffsets \- make an offsets file for logmerge
+.SH SYNOPSIS
+.B mkoffsets
+.I file ...
+.SH DESCRIPTION
+Produce a
+.I offsets
+file ready for
+.BR logmerge (1)
+to use.
+.SH AUTHORS
+Brian Campbell (bacam@tardis.ed.ac.uk).
+.SH SEE ALSO
+.BR logmerge (1)

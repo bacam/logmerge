@@ -1,0 +1,44 @@
+.TH LOGMERGE 1 "4 July 2006" Tardis "Logmerge manual"
+.SH NAME
+logmerge \- merge dated log files
+.SH SYNOPSIS
+.B logmerge
+.RB [ \-\-no\-update ]
+.RB [ \-\-offsets
+.IR file ]
+.SH DESCRIPTION
+Merge several log files together line by line, keeping the lines in
+chronological order.  Merging starts from the last positions read so that
+no duplicate output is produced.  Information about the log files is stored
+in the
+.I offsets
+file, which can be produced by the
+.B mkoffsets
+(1) program.
+.SH OPTIONS
+.IP \-\-no\-update
+Do not update the
+.I offsets
+file with the last position read from each log file.  The next time the program
+is run all of the output will be repeated.  This is useful for testing.
+.IP "\-\-offsets file"
+Use the given file name rather than the default of
+.I offsets
+\.
+.SH LIMITATIONS
+To cope with log rotation, the files inode number (its raw identity in the
+file system) is used to find the last read position in the correct file.
+For example, if the log file is called syslog, and its inode number has changed,
+then syslog.0 and syslog.1 are checked.
+.PP
+Strange file systems may not preserve inode numbers, which will cause the
+entire log file to be output whenever each time.
+.PP
+The log files are assumed to be in chronological order.  If they are not
+then all the lines will still be output, but not necessarily in the correct
+order.  Year rollovers may not yet be handled correctly.
+.SH AUTHORS
+Brian Campbell (bacam@tardis.ed.ac.uk).
+.SH SEE ALSO
+.BR mkoffsets (1),
+.BR piperlog (1)
