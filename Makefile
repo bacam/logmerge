@@ -1,11 +1,21 @@
+TARGETS=mkoffsets.bc mkoffsets logmerge.bc logmerge
+
+all: $(TARGETS)
+
 .PHONY: all clean
 
-all: mkoffsets logmerge
 clean:
-	rm -f mkoffsets logmerge mkoffsets.cm{i,o} logmerge.cm{i,o}
+	rm -f $(TARGETS) *.cmo *.cmi *.cmx *.o
+
+mkoffsets.bc: mkoffsets.ml
+	ocamlc -g unix.cma $^ -o $@
 
 mkoffsets: mkoffsets.ml
+	ocamlopt unix.cmxa $^ -o $@
+
+logmerge.bc: logmerge.ml
 	ocamlc -g unix.cma $^ -o $@
 
 logmerge: logmerge.ml
-	ocamlc -g unix.cma $^ -o $@
+	ocamlopt unix.cmxa $^ -o $@
+
