@@ -1,11 +1,16 @@
-TARGETS=mkoffsets.bc mkoffsets logmerge.bc logmerge
+PROGRAMS=mkoffsets.bc mkoffsets logmerge.bc logmerge
+TARGETS=$(PROGRAMS) logmerge.html mkoffsets.html
 
+progs: $(PROGRAMS)
 all: $(TARGETS)
 
-.PHONY: all clean
+.PHONY: all progs clean
 
 clean:
 	rm -f $(TARGETS) *.cmo *.cmi *.cmx *.o
+
+%.html: %.man
+	groff -Thtml -man $^ > $@
 
 mkoffsets.bc: mkoffsets.ml
 	ocamlc -g unix.cma $^ -o $@
