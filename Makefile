@@ -1,5 +1,5 @@
-PROGRAMS=mkoffsets.bc mkoffsets logmerge.bc logmerge
-TARGETS=$(PROGRAMS) logmerge.html mkoffsets.html
+PROGRAMS=logmerge-mkoffsets.bc logmerge-mkoffsets logmerge.bc logmerge
+TARGETS=$(PROGRAMS) logmerge.html logmerge-mkoffsets.html
 
 progs: $(PROGRAMS)
 all: $(TARGETS)
@@ -12,10 +12,10 @@ clean:
 %.html: %.man
 	groff -Thtml -man $^ > $@
 
-mkoffsets.bc: mkoffsets.ml
+logmerge-mkoffsets.bc: logmerge-mkoffsets.ml
 	ocamlc -g unix.cma $^ -o $@
 
-mkoffsets: mkoffsets.ml
+logmerge-mkoffsets: logmerge-mkoffsets.ml
 	ocamlopt unix.cmxa $^ -o $@
 
 logmerge.bc: logmerge.ml

@@ -13,7 +13,7 @@ no duplicate output is produced.  Information about the log files is stored
 in the
 .I offsets
 file, which can be produced by the
-.B mkoffsets
+.B logmerge-mkoffsets
 (1) program.
 .SH OPTIONS
 .IP \-\-no\-update
@@ -32,7 +32,7 @@ First, make an initial
 .I offsets
 file:
 .IP
-mkoffsets /var/log/auth.log /var/log/syslog > offsets
+logmerge-mkoffsets /var/log/auth.log /var/log/syslog > offsets
 .PP
 then set up a cron job to produce the summaries at regular intervals:
 .IP
@@ -52,5 +52,5 @@ order.  Year rollovers may not yet be handled correctly.
 .SH AUTHORS
 Brian Campbell (bacam@tardis.ed.ac.uk).
 .SH SEE ALSO
-.BR mkoffsets (1),
+.BR logmerge-mkoffsets (1),
 .BR piperlog (1)

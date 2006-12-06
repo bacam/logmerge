@@ -1,8 +1,8 @@
-.TH MKOFFSETS 1 "4 July 2006" Tardis "Logmerge manual"
+.TH LOGMERGE-MKOFFSETS 1 "4 July 2006" Tardis "Logmerge manual"
 .SH NAME
-mkoffsets \- make an offsets file for logmerge
+logmerge-mkoffsets \- make an offsets file for logmerge
 .SH SYNOPSIS
-.B mkoffsets
+.B logmerge-mkoffsets
 .I file ...
 .SH DESCRIPTION
 Produce a
