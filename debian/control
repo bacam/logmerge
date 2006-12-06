@@ -1,0 +1,14 @@
+Source: logmerge
+Section: admin
+Priority: optional
+Maintainer: Brian Campbell <bacam@tardis.ed.ac.uk>
+Build-Depends: debhelper (>= 4.0.0), ocaml-nox-3.08.3, libpcre-ocaml-dev
+Standards-Version: 3.6.1
+
+Package: logmerge
+Architecture: any
+Depends: ${shlibs:Depends}
+Suggests: piperlog
+Description: Merge log message files by time
+ This program merges the log messages from several files, maintaining
+ chronological order.  It was written for use with the piperlog package.
