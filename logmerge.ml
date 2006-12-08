@@ -83,7 +83,7 @@ let savenewoffsets offsetsfile sources =
   in List.iter writeoffset sources
 ;;
 
-let offsetsfn = ref "offsets";;
+let offsetsfn = ref "/var/lib/misc/logmerge.offsets";;
 let update = ref true;;
 
 let main () =
