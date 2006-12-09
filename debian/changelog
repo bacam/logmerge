@@ -1,6 +1,6 @@
-logmerge (0.0.20061206) unstable; urgency=low
+logmerge (0.1) unstable; urgency=low
 
   * Initial Release.
 
- -- Brian Campbell <bacam@tardis.ed.ac.uk>  Wed,  6 Dec 2006 22:08:50 +0000
+ -- Brian Campbell <bacam@tardis.ed.ac.uk>  Sat,  9 Dec 2006 20:07:00 +0000
 
