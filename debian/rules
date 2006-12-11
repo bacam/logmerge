@@ -31,6 +31,7 @@ install: build
 	dh_installdirs
 	install -D -o root -g root logmerge $(CURDIR)/debian/logmerge/usr/bin/logmerge
 	install -D -o root -g root logmerge-mkoffsets $(CURDIR)/debian/logmerge/usr/bin/logmerge-mkoffsets
+	install -d -o root -g root $(CURDIR)/debian/logmerge/var/lib/logmerge
 
 
 # Build architecture-independent files here.
