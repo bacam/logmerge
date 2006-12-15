@@ -1,3 +1,9 @@
+logmerge (0.1+darcs) unstable; urgency=low
+
+  * Some working version.
+
+ -- Brian Campbell <bacam@tardis.ed.ac.uk>  Fri, 15 Dec 2006 21:57:00 +0000
+
 logmerge (0.1) unstable; urgency=low
 
   * Initial Release.
