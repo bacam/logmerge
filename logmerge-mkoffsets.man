@@ -7,9 +7,17 @@ logmerge-mkoffsets \- make an offsets file for logmerge
 .SH DESCRIPTION
 Produce a
 .I offsets
-file ready for
+file on the standard output ready for
 .BR logmerge (1)
-to use.
+to use.  The log files to use are given as the arguments.
+.SH EXAMPLE
+To make an
+.I offsets
+file suitable for many Linux systems:
+.IP
+logmerge-mkoffsets /var/log/auth.log /var/log/syslog.log \e
+.br
+  > /var/lib/logmerge/offsets
 .SH AUTHORS
 Brian Campbell (bacam@tardis.ed.ac.uk).
 .SH SEE ALSO
