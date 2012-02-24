@@ -39,4 +39,14 @@ echo Should output lines 5 and 6:
 
 ./logmerge --offsets "$DIR/offsets"
 
+echo Feb 24 08:30:09 line 7 >> "$DIR/log"
+mv "$DIR/log" "$DIR/log.0"
+chmod a-r "$DIR/log.0"
+
+echo Feb 24 08:30:10 line 8 > "$DIR/log"
+
+echo Should output line 8, complain about no read permissions and keep going:
+
+./logmerge --offsets "$DIR/offsets"
+
 rm -r "$DIR"
