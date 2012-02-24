@@ -8,13 +8,17 @@ let rec tryoffset variations filename inode offset =
            [(NotFound offset, filename, inode)])
   | v::t ->
       try
-        let file = open_in (filename ^ v) in
-        let stat = Unix.fstat (Unix.descr_of_in_channel file) in
+        let fd = Unix.openfile (filename ^ v) [Unix.O_RDONLY] 0o640 in
+        let stat = Unix.fstat fd in
+        let file = Unix.in_channel_of_descr fd in
         let res = (Found file, filename, stat.Unix.st_ino) in
         if stat.Unix.st_ino = inode then (LargeFile.seek_in file offset; [res])
         else res::(tryoffset t filename inode offset)
-      with Sys_error s ->
-        (prerr_endline ("Unable to open file " ^ filename ^ v ^ ": " ^ s);
+      with Unix.Unix_error (Unix.ENOENT,_,_) ->
+         tryoffset t filename inode offset
+         | Unix.Unix_error (err,_,_) ->
+        (prerr_endline ("Unable to open file " ^ filename ^ v ^ ": " ^
+                        Unix.error_message err);
          tryoffset t filename inode offset)
 ;;
 
