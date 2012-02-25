@@ -1,3 +1,9 @@
+logmerge (0.4) unstable; urgency=low
+
+  * Collected updates from the last few years.
+
+ -- Brian Campbell <bacam@tardis.ed.ac.uk>  Sat, 25 Feb 2012 14:34:15 +0000
+
 logmerge (0.3) unstable; urgency=low
 
   * Fix ocaml build-dep
