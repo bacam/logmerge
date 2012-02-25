@@ -12,10 +12,10 @@ clean:
 %.html: %.man
 	groff -Thtml -man $^ > $@
 
-logmerge-mkoffsets.bc: logmerge-mkoffsets.ml
+logmerge-mkoffsets.bc: logmergemkoffsets.ml
 	ocamlc -g unix.cma $^ -o $@
 
-logmerge-mkoffsets: logmerge-mkoffsets.ml
+logmerge-mkoffsets: logmergemkoffsets.ml
 	ocamlopt unix.cmxa $^ -o $@
 
 logmerge.bc: logmerge.ml
