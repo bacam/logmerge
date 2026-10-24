@@ -1,3 +1,9 @@
+logmerge (0.5) unstable; urgency=low
+
+  * Bring vaguely up to date for a Debian 12 system
+
+ -- Brian Campbell <bacam@z273.org.uk>  Sat, 24 Oct 2026 12:19:00 +0100
+
 logmerge (0.4) unstable; urgency=low
 
   * Collected updates from the last few years.

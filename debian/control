@@ -1,8 +1,8 @@
 Source: logmerge
 Section: admin
 Priority: optional
-Maintainer: Brian Campbell <bacam@tardis.ed.ac.uk>
-Build-Depends: debhelper (>= 4.0.0), ocaml-nox, libpcre-ocaml-dev
+Maintainer: Brian Campbell <bacam@z273.org.uk>
+Build-Depends: debhelper-compat (= 13), ocaml
 Standards-Version: 3.6.1
 
 Package: logmerge

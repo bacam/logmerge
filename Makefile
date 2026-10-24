@@ -4,7 +4,7 @@ TARGETS=$(PROGRAMS) logmerge.html logmerge-mkoffsets.html
 progs: $(PROGRAMS)
 all: $(TARGETS)
 
-.PHONY: all progs clean
+.PHONY: all progs clean install
 
 clean:
 	rm -f $(TARGETS) *.cmo *.cmi *.cmx *.o
@@ -24,3 +24,7 @@ logmerge.bc: logmerge.ml
 logmerge: logmerge.ml
 	ocamlopt -I +unix unix.cmxa $^ -o $@
 
+install: logmerge logmerge-mkoffsets
+	install -D logmerge $(DESTDIR)/usr/bin/logmerge
+	install -D logmerge-mkoffsets $(DESTDIR)/usr/bin/logmerge-mkoffsets
+	install -d $(DESTDIR)/var/lib/logmerge
