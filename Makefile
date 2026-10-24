@@ -13,14 +13,14 @@ clean:
 	groff -Thtml -man $^ > $@
 
 logmerge-mkoffsets.bc: logmergemkoffsets.ml
-	ocamlc -g unix.cma $^ -o $@
+	ocamlc -I +unix -g unix.cma $^ -o $@
 
 logmerge-mkoffsets: logmergemkoffsets.ml
-	ocamlopt unix.cmxa $^ -o $@
+	ocamlopt -I +unix unix.cmxa $^ -o $@
 
 logmerge.bc: logmerge.ml
-	ocamlc -g unix.cma $^ -o $@
+	ocamlc -I +unix -g unix.cma $^ -o $@
 
 logmerge: logmerge.ml
-	ocamlopt unix.cmxa $^ -o $@
+	ocamlopt -I +unix unix.cmxa $^ -o $@
 
