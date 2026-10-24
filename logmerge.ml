@@ -35,10 +35,9 @@ let openfiles offsetsfile =
 
 (* Pulls out times as an integer which respects order, more or less *)
 let extracttime s =
-  let themonth _ = 0 in (* FIX ME; need to cope with wrap arounds ? *)
-  let convert month day hour minute second =
-    second + 60*(minute + 60*(hour + 24*(day + 31*(themonth month)))) in
-  Scanf.sscanf s "%s %d %d:%d:%d " convert  (* FIX ME - handle failure *)
+  let convert year month day hour minute second =
+    second + 60*(minute + 60*(hour + 24*(day + 31*(month + 12 * year)))) in
+  Scanf.sscanf s "%d-%d-%dT%d:%d:%d." convert  (* FIX ME - handle failure *)
 ;;
 
 let rec insert ((lt,_,_) as l) lines =
